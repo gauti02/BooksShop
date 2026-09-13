@@ -3,6 +3,7 @@ using BooksShopWeb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,14 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BooksShopWeb.Migrations;
 
 [DbContext(typeof(ApplicationDBContext))]
-partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+[Migration("20260912144621_AddDisplayOrderColumntoCategoriesTable")]
+partial class _20260912144621_AddDisplayOrderColumntoCategoriesTable
 {
-    // If you encounter a merge conflict in the line below, it means you need to
-    // discard one of the migration branches and recreate its migrations on top of
-    // the other branch. See https://aka.ms/efcore-docs-migrations-conflicts for more info.
-    public override string LastMigrationId => "20260912144621_AddDisplayOrderColumntoCategoriesTable";
-
-    protected override void BuildModel(ModelBuilder modelBuilder)
+    /// <inheritdoc />
+    protected override void BuildTargetModel(ModelBuilder modelBuilder)
     {
 #pragma warning disable 612, 618
         modelBuilder
