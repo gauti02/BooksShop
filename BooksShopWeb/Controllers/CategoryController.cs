@@ -21,12 +21,21 @@ namespace BooksShopWeb.Controllers
             return View();
         }
         [HttpPost]
-        [ActionName("Create")]              
+        [ActionName("Create")]
+        [ValidateAntiForgeryToken]
         public IActionResult CreatePOST(Category category)
         {
-            _dbContext.Categories.Add(category);
-            _dbContext.SaveChanges();
-            return RedirectToAction("Index");
+            if (!string.IsNullOrEmpty(category.Name) && _dbContext.Categories.Any(c => c.Name.ToLower() == category.Name.ToLower()))
+            {
+                ModelState.AddModelError("Name", "Category name already exists.");
+            }
+            if (ModelState.IsValid)
+            {          
+                _dbContext.Categories.Add(category);
+                _dbContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
         }
     }
 }
